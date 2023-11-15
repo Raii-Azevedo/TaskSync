@@ -39,26 +39,32 @@ body {
     font-size: 12px;
     background-image: linear-gradient(
         21deg,
-        rgba(64, 83, 206, 0.3697003234675773) 68%,
-        rgba(255, 206, 196, 0.5) 163%),
+        rgba(51,36,65,255) 68%,
+        rgba(255, 206, 196, 0.5) 125%),
     linear-gradient(
         163deg,
         rgba(49, 146, 170, 0.07944489965716128) 86%,
-        rgba(239, 112, 138, 0.5) 40%),
+        rgb(156,132,184) 40%),
     linear-gradient(
         30deg,
-        rgba(76, 79, 173, 0.6173675716587805) 22%,
-        rgba(237, 106, 134, 0.5) 169%),
+        rgba(51,36,65,255)22%,
+        rgba(237, 106, 134, 0.5) 125%),
     linear-gradient(
         48deg,
         rgba(31, 85, 147, 0.7323890641868473) 64%,
         rgba(247, 126, 132, 0.5) 43%);
-    background-blend-mode: overlay, multiply, color, normal;
+    background-blend-mode: overlay, multiply, normal; /*Overlay, multiply, color, normal*/
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+}
+
+.navbar{
+    box-shadow: 0 0.3px 2.2px rgba(0, 0, 0, 0.011), 0 0.7px 5.3px rgba(0, 0, 0, 0.016),
+    0 1.3px 10px rgba(0, 0, 0, 0.02), 0 2.2px 17.9px rgba(0, 0, 0, 0.024),
+    0 4.2px 33.4px rgba(0, 0, 0, 0.029), 0 10px 80px rgba(0, 0, 0, 0.04);
 }
 
 .task-manager {
@@ -69,7 +75,7 @@ ul {
     height: 90vh;
     max-height: 900px;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 1px;
     box-shadow: 0 0.3px 2.2px rgba(0, 0, 0, 0.011), 0 0.7px 5.3px rgba(0, 0, 0, 0.016),
     0 1.3px 10px rgba(0, 0, 0, 0.02), 0 2.2px 17.9px rgba(0, 0, 0, 0.024),
     0 4.2px 33.4px rgba(0, 0, 0, 0.029), 0 10px 80px rgba(0, 0, 0, 0.04);
@@ -117,5 +123,16 @@ ul {
 .circle {
     border-radius: 50%;
     width:  10px;
-    
+    height: 10px;
+    background-color: #fe4d46;
+    box-shadow: 14px 0 0 0 #fdc023, 28px 0 0 0 #7dd21f;
 }
+
+.circle-2 {
+    border-radius:  50%;
+    width: 4px;
+    height: 4px;
+    background-color: #9698ac;
+    box-shadow: -6px 0 0 0 #9698ac, 6px 0 0 0 #9698ac;
+}
+
