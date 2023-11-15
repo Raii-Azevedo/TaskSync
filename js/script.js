@@ -36,3 +36,19 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('activityForm').reset();
     });
   });
+
+  /* BOTÂO DE LOGIN */
+  function validateAndRedirect() {
+    // Obtenha os valores dos campos de login e senha
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Verifique se os campos estão preenchidos
+    if (username !== "" && password !== "") {
+        // Redirecione para index.html se os campos estiverem preenchidos
+        window.location.href = 'index.html';
+    } else {
+        // Caso contrário, exiba uma mensagem solicitando preenchimento
+        alert("Por favor, preencha os campos de login e senha.");
+    }
+}
