@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskSync</title>
+  <!-- Seus links CSS e Bootstrap permanecem inalterados -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo.jpeg" width="35" height="35" class="d-inline-block align-top" alt="">
+      TASKSYNC
+    </a>
+  </nav>
+  <!-- Navbar END-->
+
+  <div class="task-manager">
+    <!-- left bar starts -->
+    <div class="left-bar">
+      <div class="upper-part">
+        <div class="actions">
+          <div class="circle"></div>
+          <div class="circle-2"></div>
+        </div>
+      </div>
+
+      <!-- left content starts -->
+      <div class="left-content">
+        <ul class="action-list">
+          <li class="item">
+            <img class="feather feather-inbox" src="svg/inbox.svg" alt="" />
+            <span>Inbox</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-star" src="svg/star.svg" alt="" />
+            <span>Hoje</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-calendar" src="svg/calender.svg" alt="" />
+            <span>Próximo</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-hash" src="svg/hash.svg" alt="" />
+            <span>Importante</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-users" src="svg/users.svg" alt="" />
+            <span>Meetings</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-trash" src="svg/trash.svg" alt="" />
+            <span>Lixo</span>
+          </li>
+        </ul>
+
+        <ul class="category-list">
+          <li class="item">
+            <img class="feather feather-users" src="svg/users.svg" alt="" />
+            <span>Family</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-sun" src="svg/sun.svg" alt="" />
+            <span>Vacation</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-trending-up" src="svg/trending.svg" alt="" />
+            <span>Festival</span>
+          </li>
+          <li class="item">
+            <img class="feather feather-zap" src="svg/zap.svg" alt="" />
+            <span>Concerts</span>
+          </li>
+        </ul>
+      </div>
+      <!-- left content ends -->
+    </div>
+    <!--  -->
+    <!-- left bar ends -->
+
+    <!-- Card -->
+    <div class="card">
+      <div class="card-header">
+        Nome
+        <button id="openPopup">&#x2022; &#x2022; &#x2022;</button>
+      </div>
+    </div>
+    <!-- Card END-->
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="popup-close" onclick="closePopup()">&#10006;</span>
+        <label for="taskName">Nome Tarefa:</label>
+        <input type="text" id="taskName">
+        <label for="taskDescription">Descrição:</label>
+        <textarea id="taskDescription"></textarea>
+        <label for="fileInput">Adicionar Arquivo:</label>
+        <input type="file" id="fileInput">
+        <label>Lista de Atividades:</label>
+        <ul id="activityList">
+          <!-- Atividades serão adicionadas dinamicamente aqui -->
+        </ul>
+        <button id="addActivity" onclick="addActivity()">Adicionar Atividade</button>
+        <button id="deleteButton" onclick="deletePopup()">Deletar</button>
+        <button id="saveButton" onclick="savePopup()">Salvar</button>
+      </div>
+    </div>
+
+    <!-- Adicione o seguinte HTML para o modal (ajuste conforme necessário) -->
+    <div id="addActivityModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <!-- Conteúdo do seu modal aqui -->
+      </div>
+    </div>
+    <!-- Popup END -->
+
+  </div>
+  <!-- Referência ao arquivo JavaScript externo -->
+  <script src="js/script.js"></script>
+
+  <!-- JS-->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- jQuery UI -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $(".card").draggable();
+
+      const popup = $("#popup");
+      const openPopupButton = $("#openPopup");
+      const activityList = $("#activityList");
+
+      openPopupButton.on("click", () => {
+        openModal();
+        popup.css("display", "flex");
+      });
+
+      function closePopup() {
+        $("#taskName").val("");
+        $("#taskDescription").val("");
+        $("#fileInput").val("");
+        activityList.empty();
+        closeModal();
+        popup.css("display", "none");
+      }
+
+      // Adicionando ação para o botão 'X'
+      $(".popup-close").on("click", () => {
+        closePopup();
+      });
+
+      $("#addActivity").on("click", () => {
+        const newActivity = $("<li><input type='text' class='editable-activity'><input type='checkbox' class='editable-checkbox'><button class='remove-activity'>&#x2716;</button></li>");
+        activityList.append(newActivity);
+      });
+
+      $("#activityList").on("click", ".remove-activity", function () {
+        $(this).parent().remove();
+      });
+
+      $("#deleteButton").on("click", () => {
+        closePopup();
+      });
+
+      $("#saveButton").on("click", () => {
+        const taskName = $("#taskName").val();
+        const taskDescription = $("#taskDescription").val();
+        const fileInput = $("#fileInput").val();
+        const activities = [];
+
+        $("#activityList li").each(function () {
+          const activityText = $(this).find("input.editable-activity").val();
+          const activityChecked = $(this).find("input.editable-checkbox").prop("checked");
+          activities.push({ text: activityText, checked: activityChecked });
+        });
+
+        console.log("Nome:", taskName);
+        console.log("Descrição:", taskDescription);
+        console.log("Arquivo:", fileInput);
+        console.log("Atividades:", activities);
+
+        closePopup();
+      });
+    });
+
+
+  </script>
+
+</body>
+
+</html>

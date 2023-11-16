@@ -1,54 +1,58 @@
-// Função para abrir o modal
+$(function () {
+   $(".card").draggable();
+
+   const popup = $("#popup");
+   const openPopupButton = $("#openPopup");
+   const activityList = $("#activityList");
+
+   openPopupButton.on("click", () => {
+       openModal();
+       popup.css("display", "flex");
+   });
+
+   function closePopup() {
+       $("#taskName").val("");
+       $("#taskDescription").val("");
+       $("#fileInput").val("");
+       activityList.empty();
+       closeModal(); // Fechar o modal
+       popup.css("display", "none");
+   }
+
+   function addActivity() {
+       const newActivity = $("<li><input type='text' class='editable-activity'><input type='checkbox' class='editable-checkbox'><button class='remove-activity'>&#x2716;</button></li>");
+       activityList.append(newActivity);
+   }
+
+   function deletePopup() {
+       closePopup();
+   }
+
+   function savePopup() {
+       const taskName = $("#taskName").val();
+       const taskDescription = $("#taskDescription").val();
+       const fileInput = $("#fileInput").val();
+       const activities = [];
+
+       $("#activityList li").each(function () {
+           const activityText = $(this).find("input.editable-activity").val();
+           const activityChecked = $(this).find("input.editable-checkbox").prop("checked");
+           activities.push({ text: activityText, checked: activityChecked });
+       });
+
+       console.log("Nome:", taskName);
+       console.log("Descrição:", taskDescription);
+       console.log("Arquivo:", fileInput);
+       console.log("Atividades:", activities);
+
+       closePopup();
+   }
+});
+
 function openModal() {
-    document.getElementById('addActivityModal').style.display = 'flex';
-  }
+   document.getElementById('addActivityModal').style.display = 'flex';
+}
 
-  // Função para fechar o modal
-  function closeModal() {
-    document.getElementById('addActivityModal').style.display = 'none';
-  }
-
-  // Fechar o modal se o usuário clicar fora da área do modal
-  window.onclick = function (event) {
-    var modal = document.getElementById('addActivityModal');
-    if (event.target === modal) {
-      closeModal();
-    }
-  };
-
-/* Editor de Tarefa */
-document.addEventListener('DOMContentLoaded', function () {
-    // Seu código JavaScript aqui
-
-    // Exemplo: Adicionando uma atividade ao clicar no botão
-    document.getElementById('activityForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const activityName = document.getElementById('activityName').value;
-      const activityDate = document.getElementById('activityDate').value;
-
-      // Adicionando a atividade à lista
-      const activityList = document.getElementById('activityList');
-      const li = document.createElement('li');
-      li.textContent = `${activityName} - ${activityDate}`;
-      activityList.appendChild(li);
-
-      // Limpar o formulário
-      document.getElementById('activityForm').reset();
-    });
-  });
-
-  /* BOTÂO DE LOGIN */
-  function validateAndRedirect() {
-    // Obtenha os valores dos campos de login e senha
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-
-    // Verifique se os campos estão preenchidos
-    if (username !== "" && password !== "") {
-        // Redirecione para index.html se os campos estiverem preenchidos
-        window.location.href = 'index.html';
-    } else {
-        // Caso contrário, exiba uma mensagem solicitando preenchimento
-        alert("Por favor, preencha os campos de login e senha.");
-    }
+function closeModal() {
+   document.getElementById('addActivityModal').style.display = 'none';
 }
