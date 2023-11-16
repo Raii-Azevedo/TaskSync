@@ -3,7 +3,7 @@
     - Tasksync is a task manager project designed for the Software Engineering I discipline.
   
 
-![TaskSync]()
+![TaskSync](https://github.com/Raii-Azevedo/TaskSync/blob/main/tasksync.gif)
 
 
 ## Tecnologia
